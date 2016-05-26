@@ -268,6 +268,10 @@ var WaveSurfer = {
     },
 
     zoom: function (pxPerSec) {
+        if (pxPerSec < this.getDuration() || (pxPerSec * this.drawer.getWidth()) >= 32767) {
+            return;
+        }
+
         this.params.minPxPerSec = pxPerSec;
 
         this.params.scrollParent = true;
